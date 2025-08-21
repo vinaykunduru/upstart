@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GSAP Infinite Horizontal Thumbnail Slider</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: "Montserrat", Arial, sans-serif;
+        height: 100vh;
+        width: 100vw;
+        background: #fff;
+      }
+      .thumbnail-slider {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 260px;
+        background: #fff;
+        box-shadow: 0 3px 24px rgba(0, 0, 0, 0.03);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        z-index: 10000;
+      }
+      .thumbnails {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        height: 225px;
+        will-change: transform;
+        padding-top: 20px;
+        user-select: none;
+        touch-action: pan-y;
+      }
+      .thumb {
+        width: 260px;
+        height: 160px;
+        flex: none;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      .thumb:hover {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 0;
+        pointer-events: none;
+        user-select: none;
+      }
+      .thumb-title {
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 3px;
+        font-weight: 700;
+        font-size: 1.05em;
+        color: #ff9300;
+        opacity: 0;
+        pointer-events: none;
+        white-space: nowrap;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      }
+      @media (max-width: 700px) {
+        .thumbnail-slider {
+          height: 140px;
+        }
+        .thumbnails {
+          height: 110px;
+          gap: 14px;
+        }
+        .thumb {
+          width: 110px;
+          height: 80px;
+        }
+        .thumb-title {
+          font-size: 0.9em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="thumbnail-slider" aria-label="Thumbnail Slider">
+      <div class="thumbnails" aria-live="polite" aria-atomic="true" role="list">
+        <!-- Original Thumbnails -->
+        <div
+          class="thumb"
+          data-title="Creative Fire"
+          role="listitem"
+          tabindex="0"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
+            alt="Creative Fire"
+          />
+          <div class="thumb-title"></div>
+        </div>
+        <div
+          class="thumb"
+          data-title="Bold Vision"
+          role="listitem"
+          tabindex="0"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=400&q=80"
+            alt="Bold Vision"
+          />
+          <div class="thumb-title"></div>
+        </div>
+        <div
+          class="thumb"
+          data-title="Brand Pulse"
+          role="listitem"
+          tabindex="0"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+            alt="Brand Pulse"
+          />
+          <div class="thumb-title"></div>
+        </div>
+        <div
+          class="thumb"
+          data-title="Experience Maker"
+          role="listitem"
+          tabindex="0"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1464547323746-4edd0cd0c746?auto=format&fit=crop&w=400&q=80"
+            alt="Experience Maker"
+          />
+          <div class="thumb-title"></div>
+        </div>
+        <div
+          class="thumb"
+          data-title="Digital Impact"
+          role="listitem"
+          tabindex="0"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?auto=format&fit=crop&w=400&q=80"
+            alt="Digital Impact"
+          />
+          <div class="thumb-title"></div>
+        </div>
+        <div class="thumb" data-title="Bold Moves" role="listitem" tabindex="0">
+          <img
+            src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+            alt="Bold Moves"
+          />
+          <div class="thumb-title"></div>
+        </div>
+        <div
+          class="thumb"
+          data-title="Crafted Ideas"
+          role="listitem"
+          tabindex="0"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1465101178521-f6f03bf8a1b2?auto=format&fit=crop&w=400&q=80"
+            alt="Crafted Ideas"
+          />
+          <div class="thumb-title"></div>
+        </div>
+        <div
+          class="thumb"
+          data-title="Inspired Design"
+          role="listitem"
+          tabindex="0"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80"
+            alt="Inspired Design"
+          />
+          <div class="thumb-title"></div>
+        </div>
+        <div
+          class="thumb"
+          data-title="Visionary Art"
+          role="listitem"
+          tabindex="0"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1508630179649-4c44aa36d161?auto=format&fit=crop&w=400&q=80"
+            alt="Visionary Art"
+          />
+          <div class="thumb-title"></div>
+        </div>
+        <div
+          class="thumb"
+          data-title="Engineered Wonder"
+          role="listitem"
+          tabindex="0"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=400&q=80"
+            alt="Engineered Wonder"
+          />
+          <div class="thumb-title"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      class InfiniteHorizontalScroll {
+        constructor(container) {
+          if (!container) return;
+          this.container = container;
+          this.items = Array.from(this.container.children);
+          if (this.items.length === 0) return;
+
+          this.scrollX = 0;
+          this.smoothScrollX = 0;
+          this.touchStartY = 0;
+          this.touchPrevY = 0;
+
+          // Clone items twice and prepend and append for seamless infinite scroll
+          this.cloneItems();
+
+          this.calculateDimensions();
+
+          this.bindEvents();
+
+          this.animate();
+        }
+
+        cloneItems() {
+          const fragmentBefore = document.createDocumentFragment();
+          const fragmentAfter = document.createDocumentFragment();
+
+          this.items.forEach((item) => {
+            const cloneBefore = item.cloneNode(true);
+            const cloneAfter = item.cloneNode(true);
+            fragmentBefore.appendChild(cloneBefore);
+            fragmentAfter.appendChild(cloneAfter);
+          });
+
+          this.container.insertBefore(
+            fragmentBefore,
+            this.container.firstChild
+          );
+          this.container.appendChild(fragmentAfter);
+
+          // Update items list to include clones
+          this.items = Array.from(this.container.children);
+        }
+
+        calculateDimensions() {
+          this.totalWidth = 0;
+          this.items.forEach((item) => {
+            const style = getComputedStyle(item);
+            const marginRight = parseFloat(style.marginRight);
+            const rect = item.getBoundingClientRect();
+            this.totalWidth += rect.width + marginRight;
+          });
+          this.originalWidth = this.totalWidth / 3; // Original set width
+          this.scrollX = this.originalWidth;
+          this.smoothScrollX = this.originalWidth;
+          gsap.set(this.container, { x: -this.scrollX });
+        }
+
+        bindEvents() {
+          document.addEventListener("wheel", (e) => this.handleWheel(e), {
+            passive: false,
+          });
+          document.addEventListener(
+            "touchstart",
+            (e) => this.handleTouchStart(e),
+            { passive: true }
+          );
+          document.addEventListener(
+            "touchmove",
+            (e) => this.handleTouchMove(e),
+            { passive: false }
+          );
+          document.addEventListener("touchend", (e) => this.handleTouchEnd(e), {
+            passive: false,
+          });
+
+          window.addEventListener("resize", () => {
+            this.calculateDimensions();
+          });
+
+          // Title animation on hover (desktop only)
+          this.items.forEach((thumb) => {
+            const title = thumb.getAttribute("data-title");
+            const titleDiv = thumb.querySelector(".thumb-title");
+            thumb.addEventListener("mouseenter", () => {
+              if (window.innerWidth <= 700) return;
+              titleDiv.textContent = "";
+              for (const char of title) {
+                const span = document.createElement("span");
+                span.textContent = char;
+                titleDiv.appendChild(span);
+              }
+              titleDiv.style.opacity = 1;
+              gsap.fromTo(
+                titleDiv.children,
+                { y: 22, opacity: 0 },
+                {
+                  y: 0,
+                  opacity: 1,
+                  stagger: 0.04,
+                  duration: 0.48,
+                  ease: "power2.out",
+                }
+              );
+            });
+            thumb.addEventListener("mouseleave", () => {
+              if (window.innerWidth <= 700) return;
+              gsap.to(titleDiv.children, {
+                y: -20,
+                opacity: 0,
+                stagger: 0.02,
+                duration: 0.3,
+                ease: "power2.in",
+                onComplete: () => {
+                  titleDiv.style.opacity = 0;
+                  titleDiv.textContent = "";
+                },
+              });
+            });
+          });
+        }
+
+        handleWheel(e) {
+          if (e.target.closest("input, textarea, select, button")) return; // ignore inputs
+          e.preventDefault();
+          this.scrollX += e.deltaY * 1.5;
+          this.clampScroll();
+        }
+
+        handleTouchStart(e) {
+          if (e.touches.length !== 1) return;
+          this.touchStartY = e.touches[0].clientY;
+          this.touchPrevY = this.touchStartY;
+        }
+
+        handleTouchMove(e) {
+          if (!this.touchStartY) return;
+          e.preventDefault();
+          const touchY = e.touches.clientY;
+          const delta = this.touchPrevY - touchY;
+          this.touchPrevY = touchY;
+          this.scrollX += delta * 4;
+          this.clampScroll();
+        }
+
+        handleTouchEnd(e) {
+          this.touchStartY = 0;
+          this.touchPrevY = 0;
+        }
+
+        clampScroll() {
+          if (this.scrollX < 0) {
+            this.scrollX += this.originalWidth;
+            this.smoothScrollX += this.originalWidth;
+          } else if (this.scrollX > this.totalWidth - this.originalWidth) {
+            this.scrollX -= this.originalWidth;
+            this.smoothScrollX -= this.originalWidth;
+          }
+        }
+
+        animate() {
+          this.smoothScrollX += (this.scrollX - this.smoothScrollX) * 0.06;
+          gsap.set(this.container, { x: -this.smoothScrollX });
+          requestAnimationFrame(() => this.animate());
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        new InfiniteHorizontalScroll(document.querySelector(".thumbnails"));
+      });
+    </script>
+  </body>
+</html>

@@ -2,20 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Thumbnail Slider Only</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- GSAP CDN -->
+    <title>Infinite Loop Thumbnail Slider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <style>
       html,
       body {
         margin: 0;
         padding: 0;
+        overflow: hidden;
         width: 100vw;
         height: 100vh;
         box-sizing: border-box;
         background: #fff;
-        overflow: hidden;
+        font-family: "Montserrat", Arial, sans-serif;
       }
       .thumbnail-slider {
         position: fixed;
@@ -24,11 +24,12 @@
         width: 100vw;
         height: 250px;
         background: #fff;
-        z-index: 100;
+        z-index: 10000;
         display: flex;
         justify-content: center;
         align-items: flex-start;
         box-shadow: 0 3px 24px rgba(0, 0, 0, 0.03);
+        overflow: hidden;
       }
       .thumbnails {
         display: flex;
@@ -37,20 +38,18 @@
         height: 210px;
         will-change: transform;
         padding-top: 20px;
-        touch-action: none;
+        user-select: none;
+        touch-action: pan-y;
       }
       .thumb {
         width: 240px;
         height: 150px;
-        background: #eee;
         flex: none;
         position: relative;
-        border-radius: 10px;
         overflow: hidden;
-        transition: box-shadow 0.16s;
-        cursor: pointer;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.09);
-        user-select: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
       }
       .thumb:hover {
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.17);
@@ -60,7 +59,9 @@
         height: 100%;
         object-fit: cover;
         display: block;
+        border-radius: 0; /* removed border radius */
         pointer-events: none;
+        user-select: none;
       }
       .thumb-title {
         position: absolute;
@@ -96,167 +97,231 @@
     </style>
   </head>
   <body>
-    <div class="thumbnail-slider">
-      <div class="thumbnails">
-        <!-- Add your images here, minimum 10 thumbs recommended -->
-        <div class="thumb" data-title="Creative Fire">
+    <div class="thumbnail-slider" aria-label="Thumbnail Slider">
+      <div class="thumbnails" aria-live="polite" aria-atomic="true" role="list">
+        <!-- Original set of thumbs -->
+        <div
+          class="thumb"
+          data-title="Creative Fire"
+          role="listitem"
+          tabindex="0"
+        >
           <img
             src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
-            alt=""
+            alt="Creative Fire"
           />
           <div class="thumb-title"></div>
         </div>
-        <div class="thumb" data-title="Bold Vision">
+        <div
+          class="thumb"
+          data-title="Bold Vision"
+          role="listitem"
+          tabindex="0"
+        >
           <img
             src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=400&q=80"
-            alt=""
+            alt="Bold Vision"
           />
           <div class="thumb-title"></div>
         </div>
-        <div class="thumb" data-title="Brand Pulse">
+        <div
+          class="thumb"
+          data-title="Brand Pulse"
+          role="listitem"
+          tabindex="0"
+        >
           <img
             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
-            alt=""
+            alt="Brand Pulse"
           />
           <div class="thumb-title"></div>
         </div>
-        <div class="thumb" data-title="Experience Maker">
+        <div
+          class="thumb"
+          data-title="Experience Maker"
+          role="listitem"
+          tabindex="0"
+        >
           <img
             src="https://images.unsplash.com/photo-1464547323746-4edd0cd0c746?auto=format&fit=crop&w=400&q=80"
-            alt=""
+            alt="Experience Maker"
           />
           <div class="thumb-title"></div>
         </div>
-        <div class="thumb" data-title="Digital Impact">
+        <div
+          class="thumb"
+          data-title="Digital Impact"
+          role="listitem"
+          tabindex="0"
+        >
           <img
             src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?auto=format&fit=crop&w=400&q=80"
-            alt=""
+            alt="Digital Impact"
           />
           <div class="thumb-title"></div>
         </div>
-        <div class="thumb" data-title="Bold Moves">
+        <div class="thumb" data-title="Bold Moves" role="listitem" tabindex="0">
           <img
             src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
-            alt=""
+            alt="Bold Moves"
           />
           <div class="thumb-title"></div>
         </div>
-        <div class="thumb" data-title="Crafted Ideas">
+        <div
+          class="thumb"
+          data-title="Crafted Ideas"
+          role="listitem"
+          tabindex="0"
+        >
           <img
             src="https://images.unsplash.com/photo-1465101178521-f6f03bf8a1b2?auto=format&fit=crop&w=400&q=80"
-            alt=""
+            alt="Crafted Ideas"
           />
           <div class="thumb-title"></div>
         </div>
-        <div class="thumb" data-title="Inspired Design">
+        <div
+          class="thumb"
+          data-title="Inspired Design"
+          role="listitem"
+          tabindex="0"
+        >
           <img
             src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80"
-            alt=""
+            alt="Inspired Design"
           />
           <div class="thumb-title"></div>
         </div>
-        <div class="thumb" data-title="Visionary Art">
+        <div
+          class="thumb"
+          data-title="Visionary Art"
+          role="listitem"
+          tabindex="0"
+        >
           <img
             src="https://images.unsplash.com/photo-1508630179649-4c44aa36d161?auto=format&fit=crop&w=400&q=80"
-            alt=""
+            alt="Visionary Art"
           />
           <div class="thumb-title"></div>
         </div>
-        <div class="thumb" data-title="Engineered Wonder">
+        <div
+          class="thumb"
+          data-title="Engineered Wonder"
+          role="listitem"
+          tabindex="0"
+        >
           <img
             src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=400&q=80"
-            alt=""
+            alt="Engineered Wonder"
           />
           <div class="thumb-title"></div>
         </div>
+        <!-- Duplicate thumbs for infinite loop -->
+        <!-- These will be cloned by JS dynamically -->
       </div>
     </div>
+
     <script>
-      // SETUP
       const container = document.querySelector(".thumbnails");
-      const thumbs = Array.from(document.querySelectorAll(".thumb"));
+      let thumbs = Array.from(document.querySelectorAll(".thumb"));
+      let thumbCount = thumbs.length;
+
+      // Clone thumbs for infinite looping
+      thumbs.forEach((thumb) => {
+        const clone = thumb.cloneNode(true);
+        container.appendChild(clone);
+      });
+
+      let totalThumbs = container.children.length;
       let thumbWidth =
         thumbs[0].offsetWidth +
         parseFloat(getComputedStyle(container).gap || 24);
+
+      // Positions
       let currentX = 0;
-      // Update thumbWidth on resize
-      function updateThumbWidth() {
-        thumbWidth =
-          thumbs.offsetWidth +
-          parseFloat(getComputedStyle(container).gap || 24);
+
+      /**
+       * Normalize scroll position for infinite loop
+       */
+      function updateInfiniteX(x) {
+        // Since thumbs are duplicated, loop back when scrolling past half
+        const maxTranslate = -thumbWidth * thumbCount;
+        if (x < maxTranslate) {
+          return x + maxTranslate;
+        }
+        if (x > 0) {
+          return x - maxTranslate;
+        }
+        return x;
       }
-      function getVisibleThumbs() {
-        return Math.floor(window.innerWidth / thumbWidth);
+
+      function setTranslate(x) {
+        currentX = updateInfiniteX(x);
+        gsap.set(container, { x: currentX });
       }
-      function getMaxX() {
-        return -(thumbs.length - getVisibleThumbs()) * thumbWidth;
+
+      setTranslate(0);
+
+      // Scroll by delta thumbnails
+      function scrollBy(delta) {
+        setTranslate(currentX - delta * thumbWidth);
       }
-      // WHEEL (DESKTOP)
+
+      // Handle mouse wheel scrolling - horizontal
       window.addEventListener(
         "wheel",
         (e) => {
-          // Only horizontal scrolling for vertical wheel (ignore ctrl+zoom)
           if (!e.ctrlKey && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
             e.preventDefault();
-            let delta = e.deltaY > 0 ? 1 : -1;
-            currentX -= delta * thumbWidth;
-            currentX = Math.max(Math.min(currentX, 0), getMaxX());
-            gsap.to(container, {
-              x: currentX,
-              duration: 0.66,
-              ease: "power2.out",
-            });
+            const delta = e.deltaY > 0 ? 1 : -1;
+            scrollBy(delta);
           }
         },
         { passive: false }
       );
 
-      // TOUCH EVENTS (MOBILE)
-      let touchStartY = null,
-        dragY = false;
+      // Mobile swipe: swipe up = slide right (+1), swipe down = slide left (-1)
+      let touchStartY = null;
       container.addEventListener("touchstart", (e) => {
         if (e.touches.length === 1) {
           touchStartY = e.touches[0].clientY;
-          dragY = true;
         }
       });
       container.addEventListener(
         "touchmove",
         (e) => {
-          if (!dragY || !touchStartY) return;
-          // Prevent accidental vertical scroll
-          e.preventDefault();
+          if (touchStartY !== null) {
+            e.preventDefault(); // prevent vertical page scroll
+          }
         },
         { passive: false }
       );
-      container.addEventListener("touchend", (e) => {
-        if (!touchStartY) return;
-        let endY = e.changedTouches.clientY;
-        let deltaY = endY - touchStartY;
-        if (Math.abs(deltaY) > 30) {
-          let direction = deltaY < 0 ? 1 : -1; // swipe up = right, swipe down = left
-          currentX -= direction * thumbWidth;
-          currentX = Math.max(Math.min(currentX, 0), getMaxX());
-          gsap.to(container, {
-            x: currentX,
-            duration: 0.66,
-            ease: "power2.out",
-          });
-        }
-        touchStartY = null;
-        dragY = false;
-      });
+      container.addEventListener(
+        "touchend",
+        (e) => {
+          if (touchStartY === null) return;
+          let endY = e.changedTouches.clientY;
+          let diff = endY - touchStartY;
+          if (Math.abs(diff) > 30) {
+            // swipe up moves slider right (delta +1)
+            // swipe down moves slider left (delta -1)
+            scrollBy(diff < 0 ? 1 : -1);
+          }
+          touchStartY = null;
+        },
+        { passive: false }
+      );
 
-      // SPLIT TEXT TITLE ANIMATION (on hover, desktop only)
-      thumbs.forEach((thumb) => {
-        const title = thumb.getAttribute("data-title");
+      // Animate thumb titles on hover (desktop)
+      container.querySelectorAll(".thumb").forEach((thumb) => {
+        const titleText = thumb.getAttribute("data-title");
         const titleDiv = thumb.querySelector(".thumb-title");
-        thumb.addEventListener("mouseenter", function () {
-          if (window.innerWidth < 700) return; // skip mobile
+
+        thumb.addEventListener("mouseenter", () => {
+          if (window.innerWidth <= 700) return; // disable on mobile
           titleDiv.innerHTML = "";
-          [...title].forEach((letter) => {
+          [...titleText].forEach((char) => {
             const span = document.createElement("span");
-            span.textContent = letter;
+            span.textContent = char;
             titleDiv.appendChild(span);
           });
           titleDiv.style.opacity = 1;
@@ -267,18 +332,19 @@
               y: 0,
               opacity: 1,
               stagger: 0.05,
-              duration: 0.48,
+              duration: 0.5,
               ease: "power2.out",
             }
           );
         });
-        thumb.addEventListener("mouseleave", function () {
-          if (window.innerWidth < 700) return;
+
+        thumb.addEventListener("mouseleave", () => {
+          if (window.innerWidth <= 700) return;
           gsap.to(titleDiv.children, {
             y: -20,
             opacity: 0,
             stagger: 0.03,
-            duration: 0.26,
+            duration: 0.3,
             ease: "power2.in",
             onComplete: () => {
               titleDiv.style.opacity = 0;
@@ -288,11 +354,12 @@
         });
       });
 
-      // RESPONSIVE: update thumb width/maxX on window resize
+      // Adjust thumbWidth and transforms on resize
       window.addEventListener("resize", () => {
-        updateThumbWidth();
-        currentX = Math.max(Math.min(currentX, 0), getMaxX());
-        gsap.set(container, { x: currentX });
+        thumbWidth =
+          thumbs[0].offsetWidth +
+          parseFloat(getComputedStyle(container).gap || 24);
+        setTranslate(currentX);
       });
     </script>
   </body>
