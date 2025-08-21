@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GSAP Horizontal Scroll</title>
+    <style>
+      section.hero {
+        height: 30vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .works-container {
+        display: flex;
+        will-change: transform;
+      }
+
+      .work-slide {
+        position: relative;
+        flex: 0 0 20vw; /* each slide width */
+        height: 20vh;
+        margin: 0 1vw;
+        background-size: cover;
+        background-position: center;
+        border-radius: 0px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.4s ease;
+      }
+
+      .work-slide:hover {
+        transform: scale(1.05);
+      }
+
+      .work-slide::after {
+        content: attr(data-title);
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        font-size: 2rem;
+        color: #fff;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .work-slide:hover::after {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="works-container">
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="Branding"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="Digital Marketing"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="Web Development"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="Creative Design"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="UI/UX"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="UI/UX"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="UI/UX"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="UI/UX"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="UI/UX"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="UI/UX"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="UI/UX"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="UI/UX"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="UI/UX"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="UI/UX"
+        ></div>
+        <div
+          class="work-slide"
+          style="background-image: url('assets/img/1\ \(1\).webp')"
+          data-title="UI/UX"
+        ></div>
+      </div>
+    </section>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <script>
+      const container = document.querySelector(".works-container");
+      let xPos = 0;
+
+      window.addEventListener("wheel", (e) => {
+        // scroll left/right with wheel
+        xPos += e.deltaY * -0.5; // sensitivity
+        gsap.to(container, {
+          x: xPos,
+          duration: 1.2,
+          ease: "power3.out",
+        });
+      });
+    </script>
+  </body>
+</html>

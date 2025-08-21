@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #000 !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  color: #000;
+}
+
+.brand {
+  color: #999;
+}
+.brand .orange {
+  color: #ef911e;
+}
+.brand .voilet {
+  color: #662c8f;
+}
+.hero-headline {
+  position: absolute;
+  bottom: 50px;
+}
+.hero-headline h2 {
+  font-size: 3rem;
+  line-height: 3.1rem;
+}
+.hero-headline h3 {
+  font-weight: normal;
+}
+.hero-headline h4 {
+  text-transform: uppercase;
+}
+
+.navbar-brand img {
+  width: 170px;
+}
+.navbar-nav a {
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.hero .grid .scroll {
+  position: absolute;
+  bottom: 3.819vw;
+  right: 3.819vw;
+}
+section.hero {
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.works-container {
+  display: flex;
+  will-change: transform;
+}
+
+.work-slide {
+  position: relative;
+  flex: 0 0 22vw; /* each slide width */
+  height: 25vh;
+  margin: 0 1vw;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.work-slide:hover {
+  transform: scale(1.05);
+}
+
+.work-slide::after {
+  content: attr(data-title);
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 2rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.work-slide:hover::after {
+  opacity: 1;
+}
