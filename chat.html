@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Infinite Works Slider Test</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #111;
+        color: #fff;
+        font-family: sans-serif;
+      }
+      section.hero {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .grid {
+        width: 100%;
+      }
+      .works-slider {
+        overflow: hidden;
+        width: 100%;
+      }
+      .works-container {
+        display: flex;
+        align-items: center;
+        will-change: transform;
+      }
+      .work-slide {
+        flex: 0 0 auto;
+        width: 300px;
+        height: 180px;
+        margin-right: 20px;
+        background: #333;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .work-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="grid">
+        <div class="works-slider">
+          <div class="works-container" role="list">
+            <!-- 10+ slides -->
+            <div class="work-slide" role="listitem">
+              <img src="https://picsum.photos/400/200?random=1" />
+            </div>
+            <div class="work-slide" role="listitem">
+              <img src="https://picsum.photos/400/200?random=2" />
+            </div>
+            <div class="work-slide" role="listitem">
+              <img src="https://picsum.photos/400/200?random=3" />
+            </div>
+            <div class="work-slide" role="listitem">
+              <img src="https://picsum.photos/400/200?random=4" />
+            </div>
+            <div class="work-slide" role="listitem">
+              <img src="https://picsum.photos/400/200?random=5" />
+            </div>
+            <div class="work-slide" role="listitem">
+              <img src="https://picsum.photos/400/200?random=6" />
+            </div>
+            <div class="work-slide" role="listitem">
+              <img src="https://picsum.photos/400/200?random=7" />
+            </div>
+            <div class="work-slide" role="listitem">
+              <img src="https://picsum.photos/400/200?random=8" />
+            </div>
+            <div class="work-slide" role="listitem">
+              <img src="https://picsum.photos/400/200?random=9" />
+            </div>
+            <div class="work-slide" role="listitem">
+              <img src="https://picsum.photos/400/200?random=10" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <script>
+      // Infinite Horizontal Scroll (extracted from your main.js)
+      class InfiniteHorizontalScroll {
+        constructor(container) {
+          if (!container) return;
+          this.container = container;
+          this.items = Array.from(this.container.children);
+          if (this.items.length === 0) return;
+          this.scrollX = 0;
+          this.smoothScrollX = 0;
+          this.touchStartY = 0;
+          this.touchDeltaY = 0;
+          this.previousDeltaY = 0;
+          this.cloneItems();
+          this.calculateDimensions();
+          this.init();
+        }
+
+        cloneItems() {
+          const fragmentBefore = document.createDocumentFragment();
+          const fragmentAfter = document.createDocumentFragment();
+          this.items.forEach((item) => {
+            const cloneBefore = item.cloneNode(true);
+            const cloneAfter = item.cloneNode(true);
+            fragmentBefore.appendChild(cloneBefore);
+            fragmentAfter.appendChild(cloneAfter);
+          });
+          this.container.insertBefore(
+            fragmentBefore,
+            this.container.firstChild
+          );
+          this.container.appendChild(fragmentAfter);
+        }
+
+        calculateDimensions() {
+          this.totalWidth = 0;
+          Array.from(this.container.children).forEach((item) => {
+            const itemWidth = item.getBoundingClientRect().width;
+            const itemMarginRight = parseFloat(
+              getComputedStyle(item).marginRight
+            );
+            this.totalWidth += itemWidth + itemMarginRight;
+          });
+          const originalWidth = this.totalWidth / 3;
+          this.scrollX = originalWidth;
+          this.smoothScrollX = originalWidth;
+          this.container.style.transform = `translateX(${-this.scrollX}px)`;
+        }
+
+        init() {
+          this.bindEvents();
+          this.animate();
+          window.addEventListener("resize", () => this.calculateDimensions());
+        }
+
+        bindEvents() {
+          document.addEventListener("wheel", (e) => this.handleWheel(e), {
+            passive: false,
+          });
+          document.addEventListener(
+            "touchstart",
+            (e) => this.handleTouchStart(e),
+            { passive: true }
+          );
+          document.addEventListener(
+            "touchmove",
+            (e) => this.handleTouchMove(e),
+            { passive: false }
+          );
+          document.addEventListener("touchend", () => this.handleTouchEnd());
+        }
+
+        handleWheel(event) {
+          event.preventDefault();
+          this.scrollX += event.deltaY * 1.5; // wheel down = left, wheel up = right
+          this.handleInfiniteScroll();
+        }
+
+        handleTouchStart(event) {
+          this.touchStartY = event.touches[0].clientY;
+          this.touchDeltaY = 0;
+          this.previousDeltaY = 0;
+        }
+
+        handleTouchMove(event) {
+          event.preventDefault();
+          if (window.innerWidth < 750) {
+            const touchY = event.touches[0].clientY;
+            this.touchDeltaY = touchY - this.touchStartY;
+            const touchSpeed = 4;
+            this.scrollX -=
+              (this.touchDeltaY - this.previousDeltaY) * touchSpeed;
+            this.previousDeltaY = this.touchDeltaY;
+          }
+          this.handleInfiniteScroll();
+        }
+
+        handleTouchEnd() {
+          this.touchDeltaY = 0;
+          this.previousDeltaY = 0;
+        }
+
+        handleInfiniteScroll() {
+          const originalWidth = this.totalWidth / 3;
+          if (this.scrollX < 0) {
+            this.scrollX += originalWidth;
+            this.smoothScrollX += originalWidth;
+          } else if (this.scrollX > this.totalWidth - originalWidth) {
+            this.scrollX -= originalWidth;
+            this.smoothScrollX -= originalWidth;
+          }
+        }
+
+        animate() {
+          this.smoothScrollX += (this.scrollX - this.smoothScrollX) * 0.06;
+          this.container.style.transform = `translateX(${-this
+            .smoothScrollX}px)`;
+          requestAnimationFrame(() => this.animate());
+        }
+      }
+
+      new InfiniteHorizontalScroll(document.querySelector(".works-container"));
+    </script>
+  </body>
+</html>
