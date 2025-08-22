@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Infinite Thumbnail Slider</title>
+    <title>Infinite Thumbnail Slider — Global Swipe</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <style>
       html,
@@ -89,7 +89,6 @@
   <body>
     <div class="thumbnail-slider">
       <div class="thumbnails">
-        <!-- 5 examples, add/replace as needed -->
         <div class="thumb" data-title="Creative Fire">
           <img
             src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
@@ -170,31 +169,50 @@
             { passive: false }
           );
 
+          // Global touch events for mobile, swipe anywhere
           let tY = null;
-          this.container.addEventListener(
+          let isSwiping = false;
+          let startX = null,
+            startY = null;
+
+          document.addEventListener(
             "touchstart",
             (e) => {
               if (e.touches.length !== 1) return;
-              tY = e.touches[0].clientY;
+              startX = e.touches[0].clientX;
+              startY = e.touches.clientY;
+              tY = startY;
+              isSwiping = true;
             },
             { passive: true }
           );
-          this.container.addEventListener(
+
+          document.addEventListener(
             "touchmove",
             (e) => {
-              if (tY !== null) {
-                e.preventDefault();
-                const cY = e.touches.clientY;
-                this.scroll += (tY - cY) * 3.3; // swipe up = right, swipe down = left
-                tY = cY;
-                this.wrap();
+              if (isSwiping && tY !== null && e.touches.length === 1) {
+                const currentX = e.touches.clientX;
+                const currentY = e.touches.clientY;
+                const diffY = currentY - tY;
+                const absDeltaX = Math.abs(currentX - startX);
+                const absDeltaY = Math.abs(currentY - startY);
+
+                // Only hijack if mostly vertical swipe ("swipe up/down")
+                if (absDeltaY > absDeltaX) {
+                  e.preventDefault();
+                  this.scroll += (tY - currentY) * 3.3;
+                  tY = currentY;
+                  this.wrap();
+                }
               }
             },
             { passive: false }
           );
-          this.container.addEventListener(
+
+          document.addEventListener(
             "touchend",
             () => {
+              isSwiping = false;
               tY = null;
             },
             { passive: true }
