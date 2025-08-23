@@ -56,47 +56,53 @@ h6,
   bottom: 3.819vw;
   right: 3.819vw;
 }
+
 section.hero {
+  width: 100vw;
   height: 30vh;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  position: relative;
+  justify-content: center;
 }
-
+.grid {
+  width: 100%;
+}
+.works-slider {
+  /* overflow: hidden; */
+  width: 100%;
+}
 .works-container {
   display: flex;
+  align-items: flex-start;
   will-change: transform;
 }
-
 .work-slide {
+  flex: 0 0 auto;
+  width: 22vw;
+  margin-right: 20px;
+  background: transparent;
   position: relative;
-  flex: 0 0 22vw; /* each slide width */
-  height: 25vh;
-  margin: 0 1vw;
-  background-size: cover;
-  background-position: center;
-  border-radius: 0px;
-  overflow: hidden;
   cursor: pointer;
-  transition: transform 0.4s ease;
 }
+.img-box {
+  width: 100%;
+  height: 25vh;
 
-.work-slide:hover {
-  transform: scale(1.05);
+  overflow: hidden; /* keeps zoom/rotate image inside rectangle */
+  background: #222;
 }
-
-.work-slide::after {
-  content: attr(data-title);
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 2rem;
-  color: #fff;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: center center;
 }
-
-.work-slide:hover::after {
-  opacity: 1;
+.work-slide h5 {
+  margin: 0 0 0;
+  font-size: 16px;
+  color: #000;
+  /* hidden initial state */
+  transform: translateY(50%) rotate(3deg);
+  clip-path: inset(0% 0% 100% 0%);
 }
