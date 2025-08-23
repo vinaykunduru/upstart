@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+:root {
+  --white: #ffffff;
+  --black: #0a0a0a;
+  --cursor-timing: all 0.4s cubic-bezier(0.52, 0.02, 0, 0.99);
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   color: #000 !important;
@@ -105,4 +111,88 @@ section.hero {
   /* hidden initial state */
   transform: translateY(50%) rotate(3deg);
   clip-path: inset(0% 0% 100% 0%);
+}
+
+/* ====== Custom Cursor ====== */
+#cursor {
+  position: fixed;
+  z-index: 999999999;
+  left: 0;
+  top: 0;
+  border-radius: 100%;
+  pointer-events: none;
+  will-change: transform;
+  opacity: 0; /* fades in on load */
+  transform: translate(-50%, -50%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor__circle {
+    width: 3.3vw;
+    height: 3.3vw;
+    border-radius: 50%;
+    border: 0.12vw solid var(--black);
+    background: transparent;
+    transition: var(--cursor-timing);
+    position: relative;
+  }
+
+  /* Hovering interactive items -> small dot */
+  #cursor.change .cursor__circle {
+    width: 0.2vw;
+    height: 0.2vw;
+    background: var(--black);
+    border-color: transparent;
+  }
+
+  /* Explore state (e.g. on sliders) -> ↔ */
+  #cursor.explore .cursor__circle {
+    border: 0.12vw solid var(--black);
+    width: 4vw;
+    height: 4vw;
+    transition: var(--cursor-timing);
+  }
+  #cursor.explore .cursor__circle::after {
+    content: "↔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5vw;
+    line-height: 1;
+    text-align: center;
+  }
+
+  /* Drag state (on hold) -> ↕ */
+  #cursor.drag .cursor__circle {
+    border: 0.12vw solid var(--black);
+    width: 8vw;
+    height: 8vw;
+    transition: var(--cursor-timing);
+  }
+  #cursor.drag .cursor__circle::after {
+    content: "↕";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5vw;
+    line-height: 1;
+    text-align: center;
+  }
+
+  /* Hide programmatically */
+  #cursor.hiding .cursor__circle {
+    opacity: 0;
+  }
+  #cursor.hiding .cursor__circle::after {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Match original behavior: no custom cursor on small screens */
+  #cursor {
+    display: none;
+  }
 }

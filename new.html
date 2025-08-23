@@ -191,6 +191,11 @@
         </div>
       </div>
     </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" aria-hidden="true">
+      <div class="cursor__circle"></div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
@@ -302,7 +307,7 @@
 
         gsap.set(title, {
           clipPath: "inset(0% 0% 100% 0%)",
-          yPercent: 200,
+          yPercent: 100,
           rotate: 3,
         });
         gsap.set(img, { scale: 1, rotate: 0 });
@@ -326,7 +331,7 @@
         slide.addEventListener("mouseleave", () => {
           gsap.to(title, {
             clipPath: "inset(0% 0% 100% 0%)",
-            yPercent: 200,
+            yPercent: 100,
             rotate: 3,
             duration: 0.6,
             ease: "power3.in",
@@ -339,6 +344,141 @@
           });
         });
       });
+    </script>
+
+    <script>
+      // ====== initInteractiveCursor (adapted from your main.js) ======
+      (function initInteractiveCursor() {
+        if (window.innerWidth <= 500) return;
+
+        const cursor = document.getElementById("cursor");
+        if (!cursor) return;
+
+        const mouse = { x: -100, y: -100 };
+        let isMoving = false;
+        let isDragging = false;
+        let cursorLocked = false;
+        let dragTimeout = null;
+        let rafId = null;
+
+        // Center transform is already in CSS; gsap just animates position.
+        function trackMouse(e) {
+          mouse.x = e.clientX;
+          mouse.y = e.clientY;
+          isMoving = true;
+        }
+
+        function addChange() {
+          if (!cursorLocked) cursor.classList.add("change");
+        }
+        function removeChange() {
+          if (!cursorLocked) cursor.classList.remove("change");
+        }
+
+        function animate() {
+          if (isMoving) {
+            gsap.to(cursor, {
+              duration: 0.7,
+              x: mouse.x,
+              y: mouse.y,
+              ease: "power3.out",
+            });
+            isMoving = false;
+          }
+          rafId = requestAnimationFrame(animate);
+        }
+
+        // Fade in cursor after page load (mirrors your onload fade)
+        window.addEventListener("load", () => {
+          gsap.fromTo(
+            cursor,
+            { scale: 0, opacity: 0 },
+            {
+              scale: 1,
+              opacity: 1,
+              duration: 1,
+              ease: "power2.inOut",
+              delay: 0.2,
+            }
+          );
+        });
+
+        // Pointer tracking
+        window.addEventListener("mousemove", trackMouse, { passive: true });
+
+        // “Interactive” elements that should shrink cursor on hover
+        const interactiveSelectors = [
+          "a",
+          "button",
+          "input",
+          "select",
+          "textarea",
+          '[role="button"]',
+          '[data-cursor="change"]',
+        ];
+        function wireInteractiveHover(root = document) {
+          root
+            .querySelectorAll(interactiveSelectors.join(","))
+            .forEach((el) => {
+              el.addEventListener("mouseenter", addChange);
+              el.addEventListener("mouseleave", removeChange);
+              el.addEventListener("click", () => {
+                // Briefly lock to avoid flicker on click
+                cursorLocked = true;
+                cursor.classList.remove("change", "explore", "drag");
+                setTimeout(() => {
+                  cursorLocked = false;
+                }, 300);
+              });
+            });
+        }
+        wireInteractiveHover();
+
+        // “Explore” state for slider-like regions
+        function addExplore() {
+          if (!cursorLocked) cursor.classList.add("explore");
+        }
+        function removeExplore() {
+          if (!cursorLocked) cursor.classList.remove("explore");
+        }
+        document.querySelectorAll('[data-cursor="explore"]').forEach((el) => {
+          el.addEventListener("mouseenter", addExplore);
+          el.addEventListener("mouseleave", removeExplore);
+        });
+
+        // Detect hold-to-drag
+        function onDown() {
+          dragTimeout = setTimeout(() => {
+            isDragging = true;
+            cursor.classList.add("drag");
+          }, 150);
+        }
+        function onMove() {
+          if (isDragging) cursor.classList.add("drag");
+        }
+        function onUp() {
+          if (isDragging) {
+            isDragging = false;
+            cursor.classList.remove("drag");
+          }
+          clearTimeout(dragTimeout);
+        }
+        document.addEventListener("mousedown", onDown);
+        document.addEventListener("mousemove", onMove);
+        document.addEventListener("mouseup", onUp);
+
+        // Start loop
+        animate();
+
+        // Optional cleanup (if you do SPA transitions)
+        window.cleanupCursor = function () {
+          if (rafId) cancelAnimationFrame(rafId);
+          window.removeEventListener("mousemove", trackMouse);
+          document.removeEventListener("mousedown", onDown);
+          document.removeEventListener("mousemove", onMove);
+          document.removeEventListener("mouseup", onUp);
+        };
+      })();
     </script>
 
     <script src="./assets/js/plugins.js"></script>
