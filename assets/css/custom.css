@@ -200,8 +200,19 @@ section.hero {
 
 @media all and (max-width: 768px) {
   .hero-headline h2 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     line-height: 1;
+  }
+  .hero-headline h3 {
+    font-weight: normal;
+    letter-spacing: 0;
+    font-size: 1rem;
+  }
+  .hero-headline h4 {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: #333;
   }
   .hero-headline {
     bottom: 20px;
