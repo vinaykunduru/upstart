@@ -145,11 +145,14 @@ section.hero {
 }
 .imgCont {
   width: 100%; /* responsive width */
-  height: 28vw; /* responsive height */
+  height: 27vw; /* responsive height */
   object-fit: cover; /* ensures image crops nicely */
   max-width: 100%; /* prevent overflow */
   display: block;
   overflow: hidden;
+}
+.project h4 {
+  margin-top: 10px;
 }
 
 /* Footer */
@@ -174,13 +177,14 @@ section.hero {
 .social a {
   background-color: #000;
   border-radius: 100%;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   text-align: center;
-  line-height: 36px;
+  line-height: 30px;
 }
 .social a i {
   color: #fff !important;
+  font-size: 0.8rem !important;
 }
 
 .contactLink a {
