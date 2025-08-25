@@ -114,6 +114,79 @@ section.hero {
   clip-path: inset(0% 0% 100% 0%);
 }
 
+/* Portfolio page */
+.filter:not(.basic-filter) ul li + li:before {
+  display: none;
+}
+.filter:not(.basic-filter) ul li {
+  display: inline-block;
+  margin-bottom: 30px;
+}
+.filter:not(.basic-filter) ul li a {
+  border: 1px solid #000;
+  border-radius: 50px;
+  font-weight: normal;
+  padding: 10px 30px;
+  color: #000;
+  margin-bottom: 10px;
+}
+.filter:not(.basic-filter) ul li a:hover,
+.filter:not(.basic-filter) ul li a.active {
+  background-color: #000;
+  color: #fff;
+}
+
+.project img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* ensures image crops nicely */
+  max-width: 100%; /* prevent overflow */
+  display: block;
+}
+.imgCont {
+  width: 100%; /* responsive width */
+  height: 28vw; /* responsive height */
+  object-fit: cover; /* ensures image crops nicely */
+  max-width: 100%; /* prevent overflow */
+  display: block;
+  overflow: hidden;
+}
+
+/* Footer */
+
+.fooContainer {
+  border-top: 1px solid #ddd;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.fooContainer p {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.fooContainer .text-right {
+  text-align: right;
+}
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.social a {
+  background-color: #000;
+  border-radius: 100%;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+}
+.social a i {
+  color: #fff !important;
+}
+
+.contactLink a {
+  text-decoration: underline;
+  color: #000;
+}
 /* ====== Custom Cursor ====== */
 #cursor {
   position: fixed;
