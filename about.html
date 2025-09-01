@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="elemis" />
+    <title>UpStart</title>
+    <link rel="shortcut icon" href="./assets/img/favicon.png" />
+    <link rel="stylesheet" href="./assets/css/plugins.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="content-wrapper">
+      <header class="wrapper">
+        <nav class="navbar navbar-expand-lg center-nav">
+          <div class="container flex-lg-row flex-nowrap align-items-center">
+            <div class="navbar-brand w-100">
+              <a href="./index.html">
+                <img src="./assets/img/logo.png" alt="" />
+              </a>
+            </div>
+            <div
+              class="navbar-collapse offcanvas offcanvas-nav offcanvas-start"
+            >
+              <div class="offcanvas-header d-lg-none">
+                <h3 class="text-white fs-30 mb-0">Eyecatch</h3>
+                <button
+                  type="button"
+                  class="btn-close btn-close-white"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Work</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                  </li>
+                </ul>
+                <!-- /.navbar-nav -->
+              </div>
+              <!-- /.offcanvas-body -->
+            </div>
+            <!-- /.navbar-collapse -->
+            <div class="navbar-other ms-lg-4">
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <li class="nav-item d-lg-none">
+                  <button class="hamburger offcanvas-nav-btn">
+                    <span></span>
+                  </button>
+                </li>
+              </ul>
+              <!-- /.navbar-nav -->
+            </div>
+            <!-- /.navbar-other -->
+          </div>
+          <!-- /.container -->
+        </nav>
+        <!-- /.navbar -->
+      </header>
+      <!-- /header -->
+
+      <section class="wrapper bg-light">
+        <div class="container pt-8 pt-md-14">
+          <div class="row">
+            <div class="col-lg-12 mx-auto">
+              <div class="aboutHero pt-3 pb-17">
+                <h3 class="sub">About</h3>
+                <h1 class="mainTitle reveal-heading">
+                  UPSTART CREATIVES IS WHERE BRANDS FIND THEIR VOICE.
+                </h1>
+                <h3 class="heroDesc reveal-text">
+                  We shape <span class="orange">branding</span> that stands out,
+                  drive <span class="voilet">digital marketing</span> that
+                  connects, and build
+                  <span class="orange">web experiences</span> that last.
+                </h3>
+              </div>
+            </div>
+            <!-- /column -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container -->
+      </section>
+
+      <section class="specialized-section">
+        <h2 class="reveal-heading">We Are Specialized In</h2>
+        <div class="cards">
+          <!-- Card 1 -->
+          <div class="card col-md-4">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="cardIcon">
+                  <img src="./assets/img/solution_w.png" alt="" />
+                </div>
+                <h3>Creative UI/UX & branding solutions.</h3>
+                <!-- <p>Creative UI/UX & branding solutions.</p> -->
+              </div>
+              <div class="card-back">
+                <div class="spcls">
+                  <span>Logos</span> <span>Prototypes</span>
+                  <span>Interfaces</span> <span>Visual Identity</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="card col-md-4">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="cardIcon">
+                  <img src="./assets/img/advertising_w.png" alt="" />
+                </div>
+                <h3>Digital Marketing & social media strategies.</h3>
+                <!-- <p>Marketing & social media strategies.</p> -->
+              </div>
+              <div class="card-back">
+                <div class="spcls">
+                  <span>SEO</span> <span>Ads</span> <span>Campaigns</span>
+                  <span>Engagement</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="card col-md-4">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="cardIcon">
+                  <img src="./assets/img/programmer_w.png" alt="" />
+                </div>
+                <h3>Modern websites & applications.</h3>
+                <!-- <p>Modern websites & applications.</p> -->
+              </div>
+              <div class="card-back">
+                <div class="spcls">
+                  <span>Web Apps</span> <span>E-Commerce</span>
+                  <span>Custom Solutions</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style>
+        .specialized-section {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .specialized-section::before,
+        .specialized-section::after {
+          content: "";
+          position: absolute;
+          width: 400px;
+          height: 400px;
+          background: radial-gradient(
+            circle,
+            rgba(255, 174, 66, 0.4),
+            transparent 70%
+          );
+          filter: blur(80px);
+          animation: floatBlob 20s ease-in-out infinite alternate;
+          z-index: 0;
+        }
+
+        .specialized-section::before {
+          top: -100px;
+          left: -100px;
+        }
+
+        .specialized-section::after {
+          bottom: -100px;
+          right: -100px;
+          animation-delay: 10s;
+        }
+
+        @keyframes floatBlob {
+          0% {
+            transform: translate(0, 0) scale(1);
+          }
+          50% {
+            transform: translate(40px, -20px) scale(1.1);
+          }
+          100% {
+            transform: translate(-30px, 30px) scale(1);
+          }
+        }
+
+        .specialized-section {
+          position: relative;
+          text-align: center;
+          padding: 5rem 2rem;
+          overflow: hidden;
+          color: #fff;
+        }
+
+        /* Background gradient animation */
+        .specialized-section::before {
+          content: "";
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(
+              circle at 30% 30%,
+              rgba(255, 183, 77, 0.4),
+              transparent 60%
+            ),
+            radial-gradient(
+              circle at 70% 70%,
+              rgba(255, 138, 101, 0.4),
+              transparent 60%
+            );
+          filter: blur(80px);
+          animation: blobFloat 20s ease-in-out infinite alternate;
+          z-index: 0;
+        }
+
+        @keyframes blobFloat {
+          0% {
+            transform: translate(0, 0) scale(1);
+          }
+          50% {
+            transform: translate(-5%, -5%) scale(1.1);
+          }
+          100% {
+            transform: translate(5%, 5%) scale(1);
+          }
+        }
+        @keyframes blobFloat {
+          0% {
+            transform: translate(0, 0) scale(1);
+          }
+          50% {
+            transform: translate(-5%, -5%) scale(1.1);
+          }
+          100% {
+            transform: translate(5%, 5%) scale(1);
+          }
+        }
+
+        @keyframes gradientShift {
+          0% {
+            transform: translate(0, 0) scale(1);
+          }
+          50% {
+            transform: translate(-10%, -10%) scale(1.1);
+          }
+          100% {
+            transform: translate(10%, 10%) scale(1);
+          }
+        }
+
+        .cards {
+          display: flex;
+          gap: 2rem;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-top: 2rem;
+          position: relative;
+          z-index: 1; /* ensures cards appear above background */
+        }
+
+        .card {
+          width: 320px;
+          height: 200px;
+          perspective: 1000px;
+          background-color: transparent;
+          border: 0;
+        }
+
+        .cardIcon {
+          width: 50px;
+        }
+        .cardIcon img {
+          width: 100%;
+        }
+
+        .card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+          transform-style: preserve-3d;
+        }
+
+        .card:hover .card-inner {
+          transform: rotateY(180deg) scale(1.05);
+        }
+
+        .card-front,
+        .card-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 16px;
+          backface-visibility: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 1rem;
+          color: #fff;
+          font-family: sans-serif;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .card-front h3 {
+          color: #eee;
+          line-height: 1.2;
+          margin-top: 20px;
+        }
+
+        .card-front {
+          /* background: linear-gradient(135deg, #0e7bdd, #4facfe); */
+          background-color: #444;
+        }
+
+        .card-back {
+          /* background: linear-gradient(135deg, #222, #444); */
+          background-color: #ef911e;
+          transform: rotateY(180deg);
+        }
+
+        .spcls {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .spcls span {
+          border: 1px solid #ccc;
+          padding: 6px 15px;
+          border-radius: 50px;
+          font-size: 14px;
+        }
+      </style>
+
+      <section class="ourStory">
+        <div class="container">
+          <div class="row pt-12 pb-12">
+            <div class="col-lg-12">
+              <h2>Our Story</h2>
+              <h4>
+                Our story began with three passionate professionals —
+                <strong
+                  >a graphic designer, a digital marketing expert, and a web
+                  developer</strong
+                >
+                — each bringing over <span>15 years</span> of experience. From
+                our home in Hyderabad, India, we came together with one vision:
+                to <span>create brands</span> that stand out,
+                <span>digital strategies</span> that connect with people, and
+                <span>web experiences</span> that are built to last. What
+                started as individual journeys has grown into a shared mission
+                to help businesses tell their stories in the most creative and
+                meaningful way.
+              </h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="partners pt-14 pb-14">
+        <div class="partnerTitle">
+          <h2>Our Clients</h2>
+          <h4>Celebrated Partnerships. Shared Success.</h4>
+        </div>
+        <div class="partners-logos">
+          <div class="marquee-content marquee reverse">
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c1.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c2.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c3.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c4.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c5.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c6.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c7.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c8.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c9.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c10.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+
+            <!-- Duplicate -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c1.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c2.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c3.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c4.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c5.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c6.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c7.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c8.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c9.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+            <div class="partner-logo">
+              <div class="image">
+                <img src="./assets/img/clients/c10.png" alt="" />
+              </div>
+            </div>
+            <!-- Partner Logo -->
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-content">
+          <h2 class="cta-heading">
+            Ready to <span>Transform</span> Your Vision?
+          </h2>
+          <p class="cta-text">
+            Let’s build experiences that inspire, connect, and last a lifetime.
+          </p>
+          <a href="contact.html" class="cta-button">Start Your Journey</a>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container fooContainer">
+          <div class="row">
+            <div class="col-md-4">
+              <p class="copy">&copy;Upstart Creatives 2025.</p>
+            </div>
+            <!-- Col-->
+            <div class="col-md-4 social">
+              <a
+                href="https://x.com/pcr_projects"
+                target="_blank"
+                class="btn-circle"
+                ><i class="uil uil-twitter"></i
+              ></a>
+              <a href="https://www.facebook.com/pcrprojects" target="_blank"
+                ><i class="uil uil-facebook-f"></i
+              ></a>
+
+              <a href="https://www.instagram.com/pcr.projects/" target="_blank"
+                ><i class="uil uil-instagram"></i
+              ></a>
+              <a
+                href="https://api.whatsapp.com/send?phone=918977900919&amp;text=Kindly%20share%20more%20details"
+                target="_blank"
+                ><i class="uil uil-whatsapp"></i
+              ></a>
+              <!-- <a href="#"><i class="uil uil-youtube"></i></a> -->
+            </div>
+            <!-- Col-->
+            <div class="col-md-4">
+              <p class="contactLink text-right"><a href="">Contact</a></p>
+            </div>
+            <!-- Col-->
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" aria-hidden="true">
+      <div class="cursor__circle"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      function initAnimations() {
+        // 🔹 Reset old triggers before re-init (important for Swup)
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+
+        // 🔹 Headings (clipPath reveal)
+        gsap.utils.toArray(".reveal-heading").forEach((heading) => {
+          gsap.fromTo(
+            heading,
+            { clipPath: "inset(100% 0% 0% 0%)" },
+            {
+              clipPath: "inset(0% 0% 0% 0%)",
+              duration: 1.2,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: heading,
+                start: "top 80%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
+        });
+
+        // 🔹 Paragraph Text
+        gsap.utils.toArray(".reveal-text").forEach((text) => {
+          gsap.from(text, {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: text,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          });
+        });
+
+        // 🔹 Images (skew + fade on scroll)
+        gsap.utils.toArray(".reveal-img").forEach((img) => {
+          gsap.from(img, {
+            y: 80,
+            skewY: 5,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: img,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          });
+
+          // 🔹 Hover effect (scale + rotate)
+          img.addEventListener("mouseenter", () => {
+            gsap.to(img, {
+              scale: 1.1,
+              rotate: 3,
+              duration: 0.8,
+              ease: "power3.out",
+            });
+          });
+
+          img.addEventListener("mouseleave", () => {
+            gsap.to(img, {
+              scale: 1,
+              rotate: 0,
+              duration: 0.8,
+              ease: "power3.out",
+            });
+          });
+        });
+
+        // 🔹 Split-text (word-by-word reveal on scroll)
+        document.querySelectorAll(".reveal-split").forEach((el) => {
+          // clean old split if exists
+          if (el.split) el.split.revert();
+          el.split = new SplitType(el, { types: "words" });
+
+          gsap.from(el.split.words, {
+            yPercent: 120,
+            opacity: 0,
+            stagger: 0.06,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 80%",
+              end: "bottom 60%",
+              scrub: true,
+            },
+          });
+        });
+
+        // Refresh ScrollTrigger after all setups
+        ScrollTrigger.refresh();
+      }
+
+      // First run
+      initAnimations();
+
+      // Swup hook → re-run animations after page transition
+      document.addEventListener("swup:contentReplaced", () => {
+        initAnimations();
+      });
+    </script>
+
+    <script>
+      // ====== initInteractiveCursor (adapted from your main.js) ======
+      (function initInteractiveCursor() {
+        if (window.innerWidth <= 500) return;
+
+        const cursor = document.getElementById("cursor");
+        if (!cursor) return;
+
+        const mouse = { x: -100, y: -100 };
+        let isMoving = false;
+        let isDragging = false;
+        let cursorLocked = false;
+        let dragTimeout = null;
+        let rafId = null;
+
+        // Center transform is already in CSS; gsap just animates position.
+        function trackMouse(e) {
+          mouse.x = e.clientX;
+          mouse.y = e.clientY;
+          isMoving = true;
+        }
+
+        function addChange() {
+          if (!cursorLocked) cursor.classList.add("change");
+        }
+        function removeChange() {
+          if (!cursorLocked) cursor.classList.remove("change");
+        }
+
+        function animate() {
+          if (isMoving) {
+            gsap.to(cursor, {
+              duration: 0.7,
+              x: mouse.x,
+              y: mouse.y,
+              ease: "power3.out",
+            });
+            isMoving = false;
+          }
+          rafId = requestAnimationFrame(animate);
+        }
+
+        // Fade in cursor after page load (mirrors your onload fade)
+        window.addEventListener("load", () => {
+          gsap.fromTo(
+            cursor,
+            { scale: 0, opacity: 0 },
+            {
+              scale: 1,
+              opacity: 1,
+              duration: 1,
+              ease: "power2.inOut",
+              delay: 0.2,
+            }
+          );
+        });
+
+        // Pointer tracking
+        window.addEventListener("mousemove", trackMouse, { passive: true });
+
+        // “Interactive” elements that should shrink cursor on hover
+        const interactiveSelectors = [
+          "a",
+          "button",
+          "input",
+          "select",
+          "textarea",
+          '[role="button"]',
+          '[data-cursor="change"]',
+        ];
+        function wireInteractiveHover(root = document) {
+          root
+            .querySelectorAll(interactiveSelectors.join(","))
+            .forEach((el) => {
+              el.addEventListener("mouseenter", addChange);
+              el.addEventListener("mouseleave", removeChange);
+              el.addEventListener("click", () => {
+                // Briefly lock to avoid flicker on click
+                cursorLocked = true;
+                cursor.classList.remove("change", "explore", "drag");
+                setTimeout(() => {
+                  cursorLocked = false;
+                }, 300);
+              });
+            });
+        }
+        wireInteractiveHover();
+
+        // “Explore” state for slider-like regions
+        function addExplore() {
+          if (!cursorLocked) cursor.classList.add("explore");
+        }
+        function removeExplore() {
+          if (!cursorLocked) cursor.classList.remove("explore");
+        }
+        document.querySelectorAll('[data-cursor="explore"]').forEach((el) => {
+          el.addEventListener("mouseenter", addExplore);
+          el.addEventListener("mouseleave", removeExplore);
+        });
+
+        // Detect hold-to-drag
+        function onDown() {
+          dragTimeout = setTimeout(() => {
+            isDragging = true;
+            cursor.classList.add("drag");
+          }, 150);
+        }
+        function onMove() {
+          if (isDragging) cursor.classList.add("drag");
+        }
+        function onUp() {
+          if (isDragging) {
+            isDragging = false;
+            cursor.classList.remove("drag");
+          }
+          clearTimeout(dragTimeout);
+        }
+        document.addEventListener("mousedown", onDown);
+        document.addEventListener("mousemove", onMove);
+        document.addEventListener("mouseup", onUp);
+
+        // Start loop
+        animate();
+
+        // Optional cleanup (if you do SPA transitions)
+        window.cleanupCursor = function () {
+          if (rafId) cancelAnimationFrame(rafId);
+          window.removeEventListener("mousemove", trackMouse);
+          document.removeEventListener("mousedown", onDown);
+          document.removeEventListener("mousemove", onMove);
+          document.removeEventListener("mouseup", onUp);
+        };
+      })();
+    </script>
+
+    <script>
+      gsap.from(".card", {
+        y: 80,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".cards",
+          start: "top 80%",
+        },
+      });
+    </script>
+
+    <script src="./assets/js/plugins.js"></script>
+    <script src="./assets/js/theme.js"></script>
+  </body>
+</html>
